@@ -4,9 +4,14 @@
 		%meta(charset="UTF-8")
 		%title comic2
 		:css
-			img {display: block; margin: 8px auto;}
-			p#tbc {font-family: Georgia, serif; font-size: 120%; text-align: center; margin: 100px auto;}
+			body {font-family: Georgia, serif;} 
+			img {display: block; margin: 10px auto;}
+			p.author {text-align: right; margin: -25px auto 0; width: 920px;}
+			p#tbc {font-size: 120%; text-align: center; margin: 100px auto;}
 	%body
 		- Pathname.glob('public/*.{jpg,png}').sort_by(&:basename_to_i).each do |pn|
-			%img{:src => pn.basename, :id => pn.basename_to_i, :title => pn.basename_to_i, :alt => pn.basename_to_i}
+			- i = pn.basename_to_i
+			%img{:src => pn.basename, :id => i, :title => i, :alt => i}
+			%p.author= "by " + (i.odd? ? "Alan" : "Kevin")
+			
 		%p{:id => 'tbc'} to be continued...
