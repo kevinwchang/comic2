@@ -1,5 +1,7 @@
 require 'rubygems'
-require 'sinatra'
-require './comic'
+require 'bundler'
 
+Bundler.require
+
+require './comic'
 run Sinatra::Application
